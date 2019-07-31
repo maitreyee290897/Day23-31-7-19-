@@ -3,6 +3,10 @@ let express = require('express');
 //let app = express();
 let apiRoutes = require('./api-routes');
 let bodyParser = require('body-parser');
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
+
+
 let mongoose = require('mongoose');
 let app = express();
 app.use(bodyParser.urlencoded({
@@ -38,6 +42,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/api', apiRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, () => {
     console.log('server started ...');

@@ -1,3 +1,4 @@
+
 // JavaScript source code
 let mongoose = require('mongoose');
 const moviesSchema = mongoose.Schema({
